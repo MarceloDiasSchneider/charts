@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Charts JS</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js" integrity="sha512-hZf9Qhp3rlDJBvAKvmiG+goaaKRZA6LKUO35oK6EsM0/kjPK32Yw7URqrq3Q+Nvbbt8Usss+IekL7CRn83dYmw==" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="row mt-5">
+            <h1>Working with Charts</h1>
+            <div class="col-md-6 shadow mt-5">
+                <canvas id="chart"></canvas>
+            </div>
+        </div>
+    </div>
+    <script>
+        var chart = document.getElementById('chart').getContext('2d');
+
+        Chart.defaults.global.defaultFontSize = 14
+        Chart.defaults.global.defaultFontColor = 'black'
+
+        var createChart = new Chart(chart, {
+            type: 'bar',
+            data: {
+                labels: ['Internacional', 'Flamengo', 'Palmeiras', 'Corinthians', 'Palmeiras', 'Corinthians', 'Cruzeiro'],
+                datasets: [{
+                    label: 'Champion points in each edition',
+                    data: [72, 90, 80, 72, 80, 81, 80],
+                    backgroundColor : ['red', '#ce0000', 'green', 'black', 'green', 'black', 'blue' ],
+                    borderWidth: 1,
+                    borderColor: 'rgba(0, 0, 0, .3)',
+                    hoverBorderWidth: 3,
+                    hoverBorderColor: 'rgba(0, 0, 0, .3)',
+                }]
+            },
+            options: {
+                title:{
+                    display: true,
+                    text: 'Historical Brazilian Championship',
+                    fontSize: 25
+                },
+                legend:{
+                    display: true,
+                    position: 'bottom',
+                },
+                layout:{
+                    padding:{
+                        left: 0,
+                        rigth: 0,
+                        top: 0,
+                        bottom: 0
+                    }
+                },
+                tooltips:{
+                    enabled: true,
+                    mode: 'index',
+                    axis: 'y'
+                },
+                scales: {
+                    yAxes: [{
+                        display: true,
+                        ticks: {
+                            beginAtZero: true, // || suggestedMin: 0,
+                            
+                        }
+                    }]
+                },
+            }
+        });
+    </script>
+</body>
+</html>
