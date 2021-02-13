@@ -12,30 +12,33 @@
     <div class="container">
         <div class="row mt-5">
             <h1>Working with Charts</h1>
-            <div class="col-md-6 shadow mt-5">
-                <canvas id="chart"></canvas>
+            <div class="col-lg-8 shadow mt-5">
+                <canvas id="chart" width="2" height="1"></canvas>
             </div>
         </div>
     </div>
     <script>
-        var chart = document.getElementById('chart').getContext('2d');
+        let chart = document.getElementById('chart').getContext('2d');
 
         Chart.defaults.global.defaultFontSize = 14
         Chart.defaults.global.defaultFontColor = 'black'
 
-        var createChart = new Chart(chart, {
-            type: 'bar',
+        let createChart = new Chart(chart, {
+            type: 'line',
             data: {
                 labels: ['Internacional', 'Flamengo', 'Palmeiras', 'Corinthians', 'Palmeiras', 'Corinthians', 'Cruzeiro'],
-                datasets: [{
-                    label: 'Champion points in each edition',
-                    data: [72, 90, 80, 72, 80, 81, 80],
-                    backgroundColor : ['red', '#ce0000', 'green', 'black', 'green', 'black', 'blue' ],
-                    borderWidth: 1,
-                    borderColor: 'rgba(0, 0, 0, .3)',
-                    hoverBorderWidth: 3,
-                    hoverBorderColor: 'rgba(0, 0, 0, .3)',
-                }]
+                datasets: [
+                    {
+                        label: 'Champion points in each edition',
+                        data: [72, 90, 80, 72, 80, 81, 80],
+                        backgroundColor : ['red', '#ce0000', 'green', 'black', 'green', 'black', 'blue' ],
+                        borderWidth: 1,
+                        borderColor: 'rgba(0, 0, 0, .3)',
+                        hoverBorderWidth: 3,
+                        hoverBorderColor: 'rgba(0, 0, 0, .3)',
+                        fill: false
+                    },
+                ]
             },
             options: {
                 title:{
@@ -64,6 +67,7 @@
                     yAxes: [{
                         display: true,
                         ticks: {
+                            beginAtZero: true, // || suggestedMin: 0,
                             beginAtZero: true, // || suggestedMin: 0,
                             
                         }
